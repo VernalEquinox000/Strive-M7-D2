@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Navbar from "react-bootstrap";
+import Navbar from "./NavBar";
 
 export default class Home extends Component {
   render() {
-    return <div></div>;
+    return;
+    <>
+      <NavBar />
+    </>;
   }
 }
