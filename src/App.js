@@ -8,12 +8,8 @@ import Details from "./components/Details"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
 class App extends React.Component {
-  state = {searchedLoading: null}
-
-  showSearchResult = (searchString) => {
-    this.setState({ searchedLoading: true })
-    
-    componentDidMount = async () => {
+  
+    fetch = async () => {
     let response = await fetch(
       `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=frontend&location=berlin`
     );
@@ -22,20 +18,20 @@ class App extends React.Component {
   };
   }
 
-  render() {
+render() {
+  return(
     <div className="App">
       <Router>
-        <SearchBar showSearchResult={this.state.searchResult} />
+        <SearchBar  />
         <Route path="/" exact render={(props) => (
-          <Home {...props} 
-          searchedLoading={this.state.searchedLoading}
+          <Home
           />
         )} />
       </Router>
     </div>
+  )
   }
 
-}
 
 //needs Details component
 
