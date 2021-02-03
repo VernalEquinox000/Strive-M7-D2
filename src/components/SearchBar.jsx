@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, FormControl, Button } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 
 class SearchBar extends Component {
   state = {
@@ -22,6 +22,17 @@ class SearchBar extends Component {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/">Home</Nav.Link>
               </Nav>
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text id="inputGroup-sizing-default">
+                    Default
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                  aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default"
+                />
+              </InputGroup>
               <Form inline>
                 <FormControl
                   type="text"
@@ -48,4 +59,4 @@ class SearchBar extends Component {
   }
 }
 
-export default withRouter(SearchBar);
+export default SearchBar;
