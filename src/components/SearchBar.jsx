@@ -29,9 +29,7 @@ class SearchBar extends Component {
                   className="mr-sm-2"
                   value={this.state.search.location}
                 />
-                <Button variant="outline-success" onClick={this.handleEnterKey}>
-                  Search
-                </Button>
+                <Button variant="outline-success">Search</Button>
               </Form>
               <Form inline>
                 <FormControl
@@ -40,9 +38,7 @@ class SearchBar extends Component {
                   className="mr-sm-2"
                   value={this.state.search.position}
                 />
-                <Button variant="outline-success" onClick={this.handleEnterKey}>
-                  Search
-                </Button>
+                <Button variant="outline-success">Search</Button>
               </Form>
             </Navbar.Collapse>
           </Navbar>
