@@ -1,10 +1,8 @@
 import React from "react";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
-import SearchBar from "./components/SearchBar"
-//import Home from "./components/Home"
-import Details from "./components/Details"
-import Result from "./components/Result"
+import Search from "./components/Search"
+
 
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
@@ -23,7 +21,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Home/>
+          <Search />
         </Router>
       </div>
     )
