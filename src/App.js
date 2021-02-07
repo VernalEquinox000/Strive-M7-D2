@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 class App extends React.Component {
 
   state = {
-    idResult: "",
+    idResult: null,
     jobsData: [],
     selectedJob: null //null perché è un object
   }
@@ -18,11 +18,13 @@ class App extends React.Component {
 //find restituisce elemento, filter restituisce elemento nell'array
   
   //THIS.STATE INFAME PER TE SOLO LE LAME
-  theChosenOne = this.state.jobsData.find(job => job.id === this.state.idResult)
-  //console.log(theChosenOne) da fare dopo
+  
+  
 
   idResultHandler = (id) => {
     this.setState({ idResult: id })
+    var theChosenOne = this.state.jobsData.find(job => job.id === this.state.idResult)
+
   }
 
   jobsDataHandler = (jobsArray) => {
@@ -31,12 +33,23 @@ class App extends React.Component {
   }
 
 
+  componendDidMount = () => {
+    if (this.state.idResult != null) {
+      this.setState({ selectedJob: this.theChosenOne })
+    }
+      else { console.log("select a job") }
+  }
+  
   render() {
+
+    
+
+    console.log(this.theChosenOne)
+    //console.log(this.state.idResult)
+
     return (
       <div className="App">
         <Router>
-          {/* {this.idResult && this.jobsData.length>0 ? this.setState({selectedJob: this.theChosenOne}) : "nu cazz"} */}
-
           <Route path="/" render={() => <Search idResultHandler={this.idResultHandler} jobsDataHandler={this.jobsDataHandler}/> }/>
           <Route path="/details" component={Details} />
           
