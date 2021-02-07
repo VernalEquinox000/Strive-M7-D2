@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Result extends Component {
   //data = this.props.dataRichard;
@@ -16,9 +17,11 @@ export default class Result extends Component {
     return (
       <div>
         {this.props.dataRichard.map((job) => (
-          <p onClick={() => this.selectedJobHandler(job.id)}>
-            {job.id} + {job.company}
-          </p>
+          <Link to="/details">
+            <p onClick={() => this.selectedJobHandler(job.id)}>
+              {job.id} + {job.company}
+            </p>
+          </Link>
         ))}
       </div>
     );

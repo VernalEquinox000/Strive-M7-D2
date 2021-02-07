@@ -1,64 +1,78 @@
 import React from "react";
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css"
-import Search from "./components/Search"
-import Result from "./components/Result"
-import Details from "./components/Details"
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./components/Search";
+import Result from "./components/Result";
+import Details from "./components/Details";
 
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
-
   state = {
-    idResult: null,
+    idResult: "",
     jobsData: [],
-    selectedJob: null //null perché è un object
-  }
-
-//find restituisce elemento, filter restituisce elemento nell'array
-  
-  //THIS.STATE INFAME PER TE SOLO LE LAME
-  
-  
+    selectedJobby: null,
+  };
 
   idResultHandler = (id) => {
-    this.setState({ idResult: id })
-    var theChosenOne = this.state.jobsData.find(job => job.id === this.state.idResult)
-
-  }
+    this.setState({ idResult: id });
+  };
 
   jobsDataHandler = (jobsArray) => {
-    this.setState({ jobsData: jobsArray })
-    //this.setState({selectedJob: this.theChosenOne})
-  }
+    this.setState({ jobsData: jobsArray });
+  };
 
-
-  componendDidMount = () => {
-    if (this.state.idResult != null) {
-      this.setState({ selectedJob: this.theChosenOne })
+  componentDidUpdate(prevProps) {
+    if (
+      this.state.idResult !== prevProps.idResult &&
+      this.state.jobsData !== prevProps.jobsData
+    ) {
+      var newSel = this.state.jobsData.find(
+        (job) => job.id === this.state.idResult
+      );
+      console.log(newSel);
+      console.log("funziona");
+    } else {
+      console.log("Non funziona");
     }
-      else { console.log("select a job") }
   }
-  
+
   render() {
-
-    
-
-    console.log(this.theChosenOne)
-    //console.log(this.state.idResult)
+    const newSel =
+      this.state.jobsData && this.state.idResult
+        ? this.state.jobsData.find((job) => job.id === this.state.idResult)
+        : console.log("SOMETHING WENT WRONG");
+    console.log(newSel);
 
     return (
       <div className="App">
         <Router>
-          <Route path="/" render={() => <Search idResultHandler={this.idResultHandler} jobsDataHandler={this.jobsDataHandler}/> }/>
-          <Route path="/details" component={Details} />
+          <button
+            onClick={() => this.setState({ selectedJobby: newSel })}
+          ></button>
+          {this.state.jobsData && this.state.idResult
+            ? "funziona"
+            : "non funziona"}
           
-          </Router>
+        <Switch>
+          <Route
+              path="/"
+              exact
+            render={() => (
+              <Search
+                idResultHandler={this.idResultHandler}
+                jobsDataHandler={this.jobsDataHandler}
+              />
+            )}
+          />
+          
+          <Route path="/details" exact render={(props) => (<Details {...props} kulo={this.state.selectedJobby} />)} />
+          </Switch>
+        </Router>
       </div>
-    )
+    );
   }
   //Su linea 25 posso passare props, su linea 26 NO!
-
 }
 
 //needs Details component
