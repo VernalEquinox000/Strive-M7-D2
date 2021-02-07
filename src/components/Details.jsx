@@ -7,7 +7,7 @@ export default class Details extends Component {
     );
     let data = await response.json();
     console.log(data);
-    this.setState({ jobs: data });
+
     //e.preventDefault();
   };
 

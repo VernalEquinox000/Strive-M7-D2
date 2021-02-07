@@ -16,6 +16,7 @@ export default class Search extends Component {
     let data = await response.json();
     console.log(data);
     this.setState({ jobs: data });
+    this.props.jobsDataHandler(data);
     //e.preventDefault();
   };
 
@@ -33,6 +34,7 @@ export default class Search extends Component {
   };
 
   render() {
+    console.log(this.props.idResultHandler);
     return (
       <div>
         <Navbar bg="light" expand="lg">
@@ -64,7 +66,10 @@ export default class Search extends Component {
           </Navbar.Collapse>
         </Navbar>
         <hr />
-        <Result dataRichard={this.state.jobs} />
+        <Result
+          dataRichard={this.state.jobs}
+          idResultHandler={this.props.idResultHandler}
+        />
       </div>
     );
   }
