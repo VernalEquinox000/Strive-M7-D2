@@ -5,7 +5,7 @@ import Search from "./components/Search";
 import Result from "./components/Result";
 import Details from "./components/Details";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -53,9 +53,11 @@ class App extends React.Component {
           {this.state.jobsData && this.state.idResult
             ? "funziona"
             : "non funziona"}
-
+          
+        <Switch>
           <Route
-            path="/"
+              path="/"
+              exact
             render={() => (
               <Search
                 idResultHandler={this.idResultHandler}
@@ -63,7 +65,9 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/details" component={Details} />
+          
+          <Route path="/details" exact render={(props) => (<Details {...props} kulo={this.state.selectedJobby} />)} />
+          </Switch>
         </Router>
       </div>
     );
