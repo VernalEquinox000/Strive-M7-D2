@@ -31,9 +31,9 @@ class App extends React.Component {
         (job) => job.id === this.state.idResult
       );
       console.log(newSel);
-      console.log("funziona");
+      console.log("tworks");
     } else {
-      console.log("Non funziona");
+      console.log("Not working");
     }
   }
 
@@ -66,7 +66,7 @@ class App extends React.Component {
             )}
           />
           
-          <Route path="/details" exact render={(props) => (<Details {...props} kulo={this.state.selectedJobby} />)} />
+          <Route path="/details" exact render={(props) => (<Details {...props} choice={this.state.selectedJobby} />)} />
           </Switch>
         </Router>
       </div>
