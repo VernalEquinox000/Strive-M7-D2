@@ -13,13 +13,13 @@ export default class Details extends Component {
 
   render() {
     //CONSOLLOGGATILCULO (cit.)
-    console.log(this.props.kulo);
+    console.log(this.props.choice);
     return (
       <div>
         <p>
-          sono un figlio di p e displayo l'object con id{" "}
-          {this.props.kulo
-            ? this.props.kulo.company
+          {" "}
+          {this.props.choice
+            ? this.props.choice.company
             : "Sta gran ceppa di katso"}
         </p>
       </div>
